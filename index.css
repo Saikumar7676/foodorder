@@ -3,10 +3,7 @@
     border: 1px solid black;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
-    font-family:monospace;
-    background-color: ;
-
-    
+    font-family: 'Trebuchet MS', sans-serif;
 }
 
 .logo{
@@ -25,7 +22,7 @@
     
 }
 
-.nav >ul >h1{
+.nav >ul >h3{
     padding: 10px;
     margin: 10px;
     font-size: large;
@@ -36,7 +33,7 @@
 .profile{
     width: 60px;
     border-radius: 20px;
-    margin-left:550px;
+    margin-left:520px;
     margin-top: 12px;
 }
 .Search{
@@ -51,19 +48,22 @@
     display: flex;
     flex-flow: row wrap;
     margin-top: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+    position: absolute;
 
 }
 .rescard{
     margin-top: 25px;
-    background-color:darkgray;
+    background-color: #f0f0f0;
+    height: 310px;
     border-radius: 10px;
-
     width: 200px;
-    margin: 6px;
+    margin: 11px;
     padding: 2px;
     font-size: small;
-    font-family:monospace
+    font-family: 'Trebuchet MS', sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+    
+
 }
 .rescard:hover{
     border: 1px solid black;
@@ -87,10 +87,59 @@
     
     margin-left: 20px;
     cursor: pointer;
-    color: white;
-    background-color: purple;
     border-radius: 10px;
-    padding: 4px;
+    padding: 6px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+
+
+}
+.shimmer{
+    margin-top: 25px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+}
+
+.shimmer-container{
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+
+    
+}
+
+.Login-container{
+    padding: 10px;
+    color: #f0f0f0;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.Login{
+    padding: 8px;
+    cursor: pointer;
     font-size: medium;
+}
+.Name{
+ margin-top: 11px;
+ margin-left: 500px;
+
+
+}
+
+.Link:hover{
+
+     color: blue;
+}
+
+.cart{
+    text-align: center;
+    
+}
+.res-menu{
+    font-family: 'Trebuchet MS', sans-serif;
 
 }
