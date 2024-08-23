@@ -1,27 +1,15 @@
 import React, { useState } from 'react'
-import { useEffect } from 'react';
 import Shimmer from './Shimmer';
 import { useParams } from 'react-router-dom';
-import Body from './Body';
+import useRestaurantMenu from '../Utils/useRestaurantMenu';
 
 const RestaurantMenu = () => {
 
   const{resId}=useParams()
 
-    const[Menu,SetMenu]=useState()
+  const Menu=useRestaurantMenu(resId);
 
- useEffect(()=>{
-        Fetchmenu();
-    },[])
-
-    const Fetchmenu=async()=>{
-      
-        const data=await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.3417502&lng=78.5682144&restaurantId="+resId);
-        const json=await data.json();
-        console.log(json?.data)
-
-        SetMenu(json.data)
-    }
+  console.log(Menu)
 
     if(Menu==null) return <Shimmer/>
 
@@ -31,19 +19,22 @@ const RestaurantMenu = () => {
 
     const{itemCards}=Menu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[2].card.card;
 
+    console.log(itemCards)
 
   return (
-    <div className='res-menu'>
+    <div className='ml-20'>
 
-    <h4>{name}</h4>
-    <h4>{cuisines.join(' , ')}</h4>
-    <h4>{"Outlet | "+locality}</h4>
-    <h4>Menu</h4>
-    <ul>
-    {itemCards.map((item)=>
-    <h5 key={item.card.info.id}>{item.card.info.name}-Rs:{item.card.info.price/100}</h5>)}
+    <h4 className='mt-5 font-semibold'>{name}</h4>
+    <h4 className='mt-5 font-semibold'>{cuisines.join(' , ')}</h4>
+    <h4 className='mt-5 font-semibold'>{"Outlet | "+locality}</h4>
+    <h4 className='mt-5 font-semibold'>Menu</h4>
    
-    </ul>
+
+    {itemCards.map((item)=>
+    (
+    <h5 className="mt-2"key={item.card.info.id}>{item.card.info.name}-Rs:{item.card.info.price/100 || item.card.info.defaultPrice/100}</h5>
+    ))}
+
 
 
     </div>
@@ -51,3 +42,4 @@ const RestaurantMenu = () => {
 }
 
 export default RestaurantMenu
+

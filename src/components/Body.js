@@ -1,18 +1,20 @@
 import RestauranCard from "./RestauranCard";
-import {resList}  from "../Utils/Mockdata";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlinStatus from "../Utils/useOnlinStatus";
+import Dashboard from "./Dashboard";
 
 const Body=()=>{
 
 const [List,SetList]=useState([]);
 const [searchtext, Setsearchtext]=useState('')
 const [filterdata,Setfilterdata]=useState([])
-const[name,setname]=useState("")
+
+const onlinestatus=useOnlinStatus();
 
 useEffect(()=>{
-    fetchData();
+    fetchData();    
   
 },[])
 const fetchData= async()=>{
@@ -23,37 +25,43 @@ const fetchData= async()=>{
     Setfilterdata(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
 
 }
+
+if(onlinestatus===false) 
+     return <h1 style={{color:"purple"}}>Looks like your offline!! Please check your internet connection</h1>
+
 if(List.length===0){
     return <Shimmer/>
 }
-
-
     return(
         <>
-        <div className="Search">
-       <input type="text" placeholder="Search Restaurant" value={searchtext} onChange={
+        <div className=" mt-10 ml-96 ">
+       <input  className="h-10 w-44 border border-solid border-black shadow-xl   " type="text" placeholder="Search Restaurant" value={searchtext} onChange={
         (e)=>Setsearchtext(e.target.value)
        }/>
-       <button className="button"
-       onClick={()=>{
+       <button className="ml-2 p-2 rounded-md shadow-xl font-semibold bg-green-300"
+       onClick={()=>{ 
         const filtereddata=List.filter((res)=>
         res.info.name.toLowerCase().includes(searchtext.toLowerCase()
         ))
         Setfilterdata(filtereddata)
        }}>Search</button>
-       <button className="topButton"
+       <button className="ml-8 font-bold rounded-md p-2 shadow-xl  bg-purple-400 text-white"
        onClick={()=>{
         const filtereddata=List.filter((res) =>res.info.avgRating > 4.2);
         Setfilterdata(filtereddata)
        }}>Top Rated</button>
+              </div>
 
-       </div>
-       <div className="cards">
+
+       <Dashboard/>
+
+<h1 className="font-bold text-2xl text-gray-800 pt-10 pl-10" >Top restaurant chains in Hyderabad</h1>
+       <div className=" flex flex-wrap pt-5">
        {
         filterdata.map((Restaurant)=>(
             <Link to={"/Restaurant/"+Restaurant.info.id} style={{ textDecoration: 'none',color:'black' }}>
 
-            <RestauranCard key={Restaurant.info.id } resData={Restaurant}/>
+            <RestauranCard   key={Restaurant.info.id } resData={Restaurant}/>
             </Link>
         ))
        }
