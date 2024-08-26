@@ -23,7 +23,7 @@ const Dashboard = () => {
 
     if(Mind===null)return <h1></h1>
 
-    let list=Mind.slice(0,10)
+    let list=Mind.slice(0,14)
 
 
   return (

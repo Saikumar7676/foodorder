@@ -6,13 +6,18 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Help from "./src/components/Help";
 import Cart from "./src/components/Cart";
 import RestaurantMenu from "./src/components/RestaurantMenu";
+import { Provider } from "react-redux";
+import Appstore from "./src/Utils/Appstore";
+import Payment from "./src/components/Payment";
 
 const AppLayout=()=>{
     return(
+      <Provider store={Appstore}>
         <div>
           <Header/>
           <Outlet/>
         </div>
+        </Provider>
     )
 }
 
@@ -43,7 +48,11 @@ const appRouter=createBrowserRouter([
       {
         path:'/Restaurant/:resId',
         element:<RestaurantMenu/>
-      }
+      },
+      {
+        path:'/Cart/payment',
+        element:<Payment/>
+      },
     
 
     ]
