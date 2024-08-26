@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Grocery = () => {
 
@@ -87,12 +88,11 @@ const Grocery = () => {
         
         data.map((item)=>
           
-     <div className='ml-3 mt-5 cursor-pointer'>
-        
-          
+    <Link to='/Grocery/GroceryItems'> <div className='ml-3 mt-5 cursor-pointer'>
        <img  className="h-48 w-36 flex flex-wrap"src={item.img}/> 
         
        </div>
+       </Link>
         )
       }
     </div>

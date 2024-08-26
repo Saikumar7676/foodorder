@@ -19,9 +19,9 @@ import { Link } from "react-router-dom"
   let totalprice=0;
   {
     cartitems.map((item)=>
-    totalprice=totalprice+item?.card?.info?.price? item?.card?.info?.price/100 : item?.card?.info?.defaultPrice/100 )
+    totalprice=totalprice+ item?.card?.info?.price/100 || item?.card?.info?.defaultPrice/100)
   }
-  
+
   let prices=Math.floor(totalprice)
 
   console.log(prices)
@@ -50,7 +50,7 @@ import { Link } from "react-router-dom"
         cartitems.map((item)=>
         <>
         <div className="flex justify-between">
-        <h1 className="text-xs py- font-semibold">{item.card.info.name}</h1>
+        <h1 className="text-sm py- font-semibold">{item.card.info.name}</h1>
         <h2 className=" text-xs py-1"> ₹ {item?.card?.info?.price? item?.card?.info?.price/100 : item?.card?.info?.defaultPrice/100 }</h2>
         </div> 
         

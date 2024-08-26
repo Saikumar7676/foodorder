@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./src/components/Header";
 import Body from "./src/components/Body";
@@ -9,6 +9,8 @@ import RestaurantMenu from "./src/components/RestaurantMenu";
 import { Provider } from "react-redux";
 import Appstore from "./src/Utils/Appstore";
 import Payment from "./src/components/Payment";
+import GroceryItems from "./src/components/GroceryItems";
+import Grocery from "./src/components/Grocery";
 
 const AppLayout=()=>{
     return(
@@ -21,7 +23,6 @@ const AppLayout=()=>{
     )
 }
 
-const Grocery=lazy(()=> import('./src/components/Grocery'))
 
 const appRouter=createBrowserRouter([
   {
@@ -38,7 +39,7 @@ const appRouter=createBrowserRouter([
       },
       {
         path:'/Grocery',
-        element:<Suspense><Grocery/></Suspense>
+        element:<Grocery/>
       },
       
       {
@@ -52,6 +53,10 @@ const appRouter=createBrowserRouter([
       {
         path:'/Cart/payment',
         element:<Payment/>
+      },
+      {
+        path:'/Grocery/GroceryItems',
+        element:<GroceryItems/>
       },
     
 

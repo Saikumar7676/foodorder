@@ -45,7 +45,7 @@ const Header=()=>{
         
 
         <div class="mt-4  ml-5 border-solid">
-        <button className="border-solid  hover:bg-purple-400 hover:text-white font-semibold outline-1 shadow-lg p-2 rounded-md" onClick={()=>
+        <button className="border-solid  hover:bg-purple-700 hover:text-white font-semibold outline-1 shadow-lg p-2 rounded-md" onClick={()=>
 
         {
             login==="Login"? Setlogin("Logout") :Setlogin("Login")
